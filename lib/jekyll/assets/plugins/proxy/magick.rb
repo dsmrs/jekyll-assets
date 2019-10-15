@@ -26,6 +26,9 @@ module Jekyll
               if respond_to?(m, true)
                 method(m).arity == 2 ? send(m, img, c) : send(m, c)
               end
+              if img.respond_to?(k, true)
+                c.send(k, @args[:magick][k])
+              end
             end
           end
 
